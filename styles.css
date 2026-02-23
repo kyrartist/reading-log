@@ -1,0 +1,143 @@
+:root {
+  --main-font: "Lexend", sans-serif;
+  --dark-color: rgb(39, 39, 39);
+  --dark-accent-color: rgb(40, 86, 56);
+  --light-accent-color: rgb(216, 236, 211);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: var(--dark-color);
+  display: grid;
+  grid-template-columns: 20% auto;
+}
+
+#side-bar {
+  background-color: var(--light-accent-color);
+  padding: 0 20px;
+  color: var(--dark-accent-color);
+}
+
+#side-bar h1 {
+  color: var(--dark-color);
+}
+
+form input,
+textarea {
+  display: block;
+  width: 100%;
+  margin: 5px 0 10px 0;
+  border: solid 2px var(--dark-accent-color);
+  border-radius: 10px;
+  font-size: 0.875em;
+  padding: 0.5rem;
+}
+
+form input {
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#add-btn {
+  border: none;
+  background-color: var(--dark-accent-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+}
+
+nav {
+  padding: 1.5rem 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+#search-input {
+  background-color: rgb(252, 235, 213);
+  font-family: var(--main-font);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  width: 300px;
+  border: solid 2px var(--dark-accent-color);
+}
+
+#search-btn {
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background-color: var(--dark-accent-color);
+  color: white;
+  margin-left: 8px;
+}
+
+#main-body {
+  padding: 0 20px;
+}
+
+#book-container {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  place-items: center;
+  gap: 25px;
+  background-color: white;
+  padding: 20px;
+  align-items: start;
+}
+
+.book-card {
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* min-width: 120px; */
+}
+
+.book-card img {
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.book-card:hover {
+  transform: scale(103%);
+}
+
+.book-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.3rem 0;
+}
+
+.author {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--dark-accent-color);
+}
+
+@media screen and (max-width: 1000px) {
+  #book-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #book-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
