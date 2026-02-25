@@ -1,10 +1,10 @@
 const addBookForm = document.getElementById("add-book-form");
+const bookContainer = document.getElementById("book-container");
 
 addBookForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const formData = new FormData(addBookForm);
-
   const dataObject = Object.fromEntries(formData);
 
   const title = dataObject.title;
@@ -13,8 +13,8 @@ addBookForm.addEventListener("submit", async (event) => {
   let rating = parseFloat(dataObject.rating);
   rating = getStarRating(rating);
 
-  const bookData = await fetchBookData(title, author);
-  addBookToPage(bookData, rating);
+  const bookData = {title, author, rating};
+  addBookToPage(bookData);
 
   addBookForm.reset();
 });
@@ -32,43 +32,48 @@ function getStarRating(rating) {
     .join("");
 }
 
-async function fetchBookData(title, author) {
-  const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(
-    title,
-  )}+inauthor:${encodeURIComponent(author)}`;
-
-  const res = await fetch(url);
-  const data = await res.json();
-
-  const book = data.items?.[0];
-  const info = book?.volumeInfo;
-
-  return {
-    title: info?.title || title,
-    author: info?.authors?.[0] || author,
-    coverUrl: info?.imageLinks?.thumbnail || "img/no_cover_available.png",
-  };
-}
-
-function addBookToPage(book, rating) {
-  const bookContainer = document.getElementById("book-container");
+function addBookToPage(book) {
+  console.log(book);
   const newBook = document.createElement("div");
+  console.log(newBook);
 
-  newBook.innerHTML = `<div class="book-card"><img src="${book.coverUrl}" alt=""/><h2 class="book-title">${book.title}</h2><p class="author">${book.author}</p><p class="rating">${rating}</p></div>`;
-
-  newBook.addEventListener("click", () => openBookPopup(book));
+  newBook.innerHTML = `
+  <div class="book-card">
+    <img src="img/no_cover_available.png" alt=""/>
+    <h2 class="book-title">${book.title}</h2>
+    <p class="author">${book.author}</p>
+    <p class="rating">${book.rating}</p>
+  </div>`;
 
   bookContainer.appendChild(newBook);
+  newBook.addEventListener("click", () => openBookPopup(book));
+
+  saveData();
 }
+
+const bookPopup = document.getElementById("book-popup");
 
 function openBookPopup(book) {
-  const bookPopup = document.getElementById('book-popup');
+  alert(`${book}`);
+  bookPopup.classList.remove("hidden");
 
-  bookPopup.classList.remove('hidden');
+  bookPopup.innerHTML = "<p>Hello</p>";
 }
 
-document.getElementById('close-popup-btn').addEventListener("click", closeBookPopup);
+document
+  .getElementById("close-popup-btn")
+  .addEventListener("click", closeBookPopup);
 
 function closeBookPopup() {
   document.getElementById("book-popup").classList.add("hidden");
 }
+
+function saveData() {
+  localStorage.setItem("data", bookContainer.innerHTML);
+}
+
+function showBooks() {
+  bookContainer.innerHTML = localStorage.getItem("data");
+}
+
+showBooks();

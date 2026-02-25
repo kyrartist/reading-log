@@ -1,16 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 :root {
   --bg: #f7f4ef;
   --surface: #ffffff;
   --text: #3a3a3a;
-  --text-secondary: #6B6B6B;
+  --text-secondary: #6b6b6b;
 
   --accent-1: #c2a878; /* antique gold */
   --accent-2: #a3b18a; /* sage */
   --accent-3: #d9cfc1; /* warm beige */
 
-  --button-hover-color: #b8c99b;
+  --button-hover: #b8c99b;
 
-  --main-font: "Lexend", sans-serif;
+  --main-font: "Gabarito", sans-serif;
+  --header-font: "PT Serif", serif;
 }
 
 * {
@@ -30,10 +33,12 @@ body {
 #side-bar {
   padding: 0 20px;
   background-color: var(--accent-3);
+  min-height: 100vh;
 }
 
 #side-bar h1 {
   color: var(--text);
+  font-family: var(--header-font);
 }
 
 form input,
@@ -79,7 +84,7 @@ button {
   padding: 1rem 1.5rem;
   border-radius: 50px;
   width: 300px;
-  border: solid 2px var(--text);
+  border: solid 2px var(--text-secondary);
 }
 
 #search-btn {
@@ -93,7 +98,7 @@ button {
 
 #search-btn:hover,
 #add-btn:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--button-hover);
 }
 
 #main-body {
