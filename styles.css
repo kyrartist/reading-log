@@ -1,8 +1,16 @@
 :root {
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --text: #3a3a3a;
+  --text-secondary: #6B6B6B;
+
+  --accent-1: #c2a878; /* antique gold */
+  --accent-2: #a3b18a; /* sage */
+  --accent-3: #d9cfc1; /* warm beige */
+
+  --button-hover-color: #b8c99b;
+
   --main-font: "Lexend", sans-serif;
-  --dark-color: rgb(39, 39, 39);
-  --dark-accent-color: rgb(40, 86, 56);
-  --light-accent-color: rgb(199, 221, 193);
 }
 
 * {
@@ -13,20 +21,19 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: white;
-  color: var(--dark-color);
+  background-color: var(--bg);
+  color: var(--text);
   display: grid;
   grid-template-columns: 20% auto;
 }
 
 #side-bar {
-  background-color: var(--light-accent-color);
   padding: 0 20px;
-  color: var(--dark-accent-color);
+  background-color: var(--accent-3);
 }
 
 #side-bar h1 {
-  color: var(--dark-color);
+  color: var(--text);
 }
 
 form input,
@@ -38,6 +45,7 @@ textarea {
   border-radius: 10px;
   font-size: 0.875em;
   padding: 0.5rem;
+  background-color: var(--bg);
 }
 
 form input {
@@ -52,7 +60,7 @@ form legend {
 
 #add-btn {
   border: none;
-  background-color: var(--dark-accent-color);
+  background-color: var(--accent-2);
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 50px;
@@ -67,26 +75,25 @@ button {
 }
 
 #search-input {
-  background-color: rgb(252, 235, 213);
   font-family: var(--main-font);
   padding: 1rem 1.5rem;
   border-radius: 50px;
   width: 300px;
-  border: solid 2px var(--dark-accent-color);
+  border: solid 2px var(--text);
 }
 
 #search-btn {
   padding: 1rem 1.5rem;
   border-radius: 50px;
   border: none;
-  background-color: var(--dark-accent-color);
+  background-color: var(--accent-2);
   color: white;
   margin-left: 8px;
 }
 
 #search-btn:hover,
 #add-btn:hover {
-  background-color: rgb(56, 119, 78);
+  background-color: var(--button-hover-color);
 }
 
 #main-body {
@@ -99,7 +106,7 @@ button {
   grid-template-columns: repeat(6, 1fr);
   place-items: center;
   gap: 25px;
-  background-color: white;
+  background-color: var(--surface);
   padding: 20px;
   align-items: start;
 }
@@ -132,7 +139,43 @@ button {
 .author {
   font-size: 0.9rem;
   margin: 0;
-  color: var(--dark-accent-color);
+  color: var(--text-secondary);
+}
+
+#book-popup {
+  position: fixed;
+  inset: 0px;
+  width: 650px;
+  height: 450px;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: auto;
+  z-index: 999;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#close-popup-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(236, 74, 74);
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#close-popup-btn:hover {
+  background-color: rgb(255, 98, 98);
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 1000px) {
@@ -145,17 +188,4 @@ button {
   #book-container {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-#book-popup {
-  position: absolute;
-  z-index: 999;
-  margin: auto;
-  width: 400px;
-  height: 300px;
-  background-color: white;
-}
-
-.hidden {
-  display: none;
 }

@@ -56,5 +56,19 @@ function addBookToPage(book, rating) {
 
   newBook.innerHTML = `<div class="book-card"><img src="${book.coverUrl}" alt=""/><h2 class="book-title">${book.title}</h2><p class="author">${book.author}</p><p class="rating">${rating}</p></div>`;
 
+  newBook.addEventListener("click", () => openBookPopup(book));
+
   bookContainer.appendChild(newBook);
+}
+
+function openBookPopup(book) {
+  const bookPopup = document.getElementById('book-popup');
+
+  bookPopup.classList.remove('hidden');
+}
+
+document.getElementById('close-popup-btn').addEventListener("click", closeBookPopup);
+
+function closeBookPopup() {
+  document.getElementById("book-popup").classList.add("hidden");
 }
