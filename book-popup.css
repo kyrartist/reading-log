@@ -1,0 +1,56 @@
+#book-popup {
+  position: fixed;
+  inset: 0px;
+  width: 650px;
+  height: 450px;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: auto;
+  z-index: 10;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+#close-popup-btn {
+  z-index: 20;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(236, 74, 74);
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#close-popup-btn:hover {
+  background-color: rgb(255, 98, 98);
+}
+
+.hidden {
+  display: none;
+}
+
+.info-container {
+  position: relative;
+  background-color: red;
+  width: 50%;
+  height: 100%;
+  display: inline;
+}
+
+.info-container h1 {
+  margin-top: 0;
+}
+
+.reviews-container {
+  background-color: blue;
+  width: 50%;
+  height: 100px;
+  display: inline;
+}

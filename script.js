@@ -1,6 +1,7 @@
 const addBookForm = document.getElementById("add-book-form");
 const bookContainer = document.getElementById("book-container");
 
+// Take information from new book form and create book object, add book to page
 addBookForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -13,12 +14,13 @@ addBookForm.addEventListener("submit", async (event) => {
   let rating = parseFloat(dataObject.rating);
   rating = getStarRating(rating);
 
-  const bookData = {title, author, rating};
+  const bookData = { title, author, rating };
   addBookToPage(bookData);
 
   addBookForm.reset();
 });
 
+// Convert number rating to star icons
 function getStarRating(rating) {
   const fullStar = '<i class="bi bi-star-fill"></i>';
   const halfStar = '<i class="bi bi-star-half"></i>';
@@ -32,34 +34,55 @@ function getStarRating(rating) {
     .join("");
 }
 
+// Creates new div with user submitted book information
 function addBookToPage(book) {
-  console.log(book);
   const newBook = document.createElement("div");
-  console.log(newBook);
+  newBook.classList.add("book-card");
 
   newBook.innerHTML = `
-  <div class="book-card">
     <img src="img/no_cover_available.png" alt=""/>
-    <h2 class="book-title">${book.title}</h2>
+    <h2 class="title">${book.title}</h2>
     <p class="author">${book.author}</p>
     <p class="rating">${book.rating}</p>
-  </div>`;
+  `;
 
   bookContainer.appendChild(newBook);
-  newBook.addEventListener("click", () => openBookPopup(book));
 
   saveData();
 }
 
+// Add the open book pop up event listener to every .book-card element
+const container = document.getElementById("books") || document;
+
+container.addEventListener("click", (e) => {
+  const card = e.target.closest(".book-card");
+  if (!card || !container.contains(card)) return;
+
+  // console.log(card);
+  openBookPopup(card);
+});
+
+// Open popup function
 const bookPopup = document.getElementById("book-popup");
+const popupDisplay = document.createElement("div");
 
-function openBookPopup(book) {
-  alert(`${book}`);
+function openBookPopup(div) {
   bookPopup.classList.remove("hidden");
+  const bookInfoContainer = bookPopup.querySelector(".info-container");
+  const title = div.querySelector(".title").innerText;
+  const author = div.querySelector(".author").innerText;
+  const rating = div.querySelector(".rating").innerHTML;
 
-  bookPopup.innerHTML = "<p>Hello</p>";
+  popupDisplay.innerHTML = `
+    <h1>${title}</h1>
+    <p>${author}</p>
+    <p>${rating}</p>
+  `;
+
+  bookInfoContainer.appendChild(popupDisplay);
 }
 
+// Close popup button functionality
 document
   .getElementById("close-popup-btn")
   .addEventListener("click", closeBookPopup);
@@ -68,6 +91,7 @@ function closeBookPopup() {
   document.getElementById("book-popup").classList.add("hidden");
 }
 
+// Save local data
 function saveData() {
   localStorage.setItem("data", bookContainer.innerHTML);
 }
