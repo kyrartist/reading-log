@@ -30,20 +30,18 @@
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
-  background-color: rgb(236, 74, 74);
-  color: white;
+  color: gray;
   border: none;
-  font-weight: bold;
-  font-size: 1rem;
+  font-size: 2rem;
+  background-color: white;
 }
 
 #close-popup-btn:hover {
-  background-color: rgb(255, 98, 98);
+  color: #333;
 }
 
 .info-container {
   position: relative;
-  background-color: red;
   width: 50%;
   height: 100%;
   display: inline;
@@ -54,7 +52,6 @@
 }
 
 .reviews-container {
-  background-color: blue;
   width: 50%;
   height: 100px;
   display: inline;
@@ -82,8 +79,8 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   padding: 30px;
   text-align: center;
-  /* min-width: 300px; */
   width: fit-content;
+  font-size: .8rem;
 }
 
 #confirmation-content h2 {
@@ -108,12 +105,12 @@
 }
 
 #confirm-delete-btn {
-  background-color: rgb(236, 74, 74);
+  background-color: var(--red);
   color: white;
 }
 
 #confirm-delete-btn:hover {
-  background-color: rgb(255, 98, 98);
+  background-color: var(--red-hover);
 }
 
 #cancel-delete-btn {

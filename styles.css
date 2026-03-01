@@ -10,6 +10,9 @@
   --accent-2: #a3b18a; /* sage */
   --accent-3: #d9cfc1; /* warm beige */
 
+  --red: rgb(236, 74, 74);
+  --red-hover: rgb(255, 98, 98);
+
   --button-hover: #b8c99b;
 
   --main-font: "Gabarito", sans-serif;
@@ -152,8 +155,8 @@ button {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  /* background-color: rgba(0, 0, 0, 0.2); */
-  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.3);
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -171,8 +174,7 @@ button {
 }
 
 .delete-book-btn:hover {
-  /* background-color: rgb(255, 98, 98); */
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--red);
 }
 
 .title {

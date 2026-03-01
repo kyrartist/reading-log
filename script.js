@@ -42,7 +42,7 @@ function addBookToPage(book) {
   newBook.innerHTML = `
     <div class="book-image-container">
       <img src="img/no_cover_available.png" alt=""/>
-      <button class="delete-book-btn">×</button>
+      <button class="delete-book-btn" title="Delete">×</button>
     </div>
     <h2 class="title">${book.title}</h2>
     <p class="author">${book.author}</p>
@@ -69,7 +69,7 @@ books.addEventListener("click", (e) => {
   }
 
   const card = e.target.closest(".book-card");
-  if (!card || !container.contains(card)) return;
+  if (!card || !books.contains(card)) return;
 
   openBookPopup(card);
 });
