@@ -15,10 +15,23 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="book-popup" class="hidden">
-      <button id="close-popup-btn">X</button>
-      <div class="info-container"></div>
-      <div class="reviews-container"></div>
+    <div id="confirmation-popup" class="hidden">
+      <div id="confirmation-content">
+        <h2>Are you sure you want to remove this book?</h2>
+        <div id="confirmation-buttons">
+          <button id="confirm-delete-btn">Yes, Remove</button>
+          <button id="cancel-delete-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="book-popup">
+      <div id="popup">
+        <button id="close-popup-btn">X</button>
+        <div class="info-container"></div>
+        <h2>Reviews</h2>
+        <div class="reviews-container"></div>
+      </div>
     </div>
     <section id="side-bar">
       <h1>Reading Log</h1>

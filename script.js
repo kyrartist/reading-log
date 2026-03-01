@@ -40,7 +40,10 @@ function addBookToPage(book) {
   newBook.classList.add("book-card");
 
   newBook.innerHTML = `
-    <img src="img/no_cover_available.png" alt=""/>
+    <div class="book-image-container">
+      <img src="img/no_cover_available.png" alt=""/>
+      <button class="delete-book-btn">×</button>
+    </div>
     <h2 class="title">${book.title}</h2>
     <p class="author">${book.author}</p>
     <p class="rating">${book.rating}</p>
@@ -52,44 +55,65 @@ function addBookToPage(book) {
 }
 
 // Add the open book pop up event listener to every .book-card element
-const container = document.getElementById("books") || document;
+const books = document.getElementById("books") || document;
 
-container.addEventListener("click", (e) => {
+books.addEventListener("click", (e) => {
+  // Check if delete button was clicked
+  if (e.target.classList.contains("delete-book-btn")) {
+    const card = e.target.closest(".book-card");
+    if (card) {
+      currentBookCard = card;
+      document.getElementById("confirmation-popup").classList.remove("hidden");
+    }
+    return;
+  }
+
   const card = e.target.closest(".book-card");
   if (!card || !container.contains(card)) return;
 
-  // console.log(card);
   openBookPopup(card);
 });
 
-// Open popup function
+// Open popup
 const bookPopup = document.getElementById("book-popup");
 const popupDisplay = document.createElement("div");
+let currentBookCard = null;
 
 function openBookPopup(div) {
-  bookPopup.classList.remove("hidden");
+  bookPopup.style.display = "flex";
+  currentBookCard = div;
   const bookInfoContainer = bookPopup.querySelector(".info-container");
   const title = div.querySelector(".title").innerText;
   const author = div.querySelector(".author").innerText;
   const rating = div.querySelector(".rating").innerHTML;
 
-  popupDisplay.innerHTML = `
+  bookInfoContainer.innerHTML = `
     <h1>${title}</h1>
     <p>${author}</p>
     <p>${rating}</p>
   `;
-
-  bookInfoContainer.appendChild(popupDisplay);
 }
 
-// Close popup button functionality
-document
-  .getElementById("close-popup-btn")
-  .addEventListener("click", closeBookPopup);
+// Close popup
+document.getElementById("close-popup-btn").addEventListener("click", () => {
+  bookPopup.style.display = "none";
+});
 
-function closeBookPopup() {
-  document.getElementById("book-popup").classList.add("hidden");
-}
+// Confirm delete
+document.getElementById("confirm-delete-btn").addEventListener("click", () => {
+  if (currentBookCard) {
+    bookContainer.removeChild(currentBookCard);
+    bookPopup.style.display = "none";
+    document.getElementById("confirmation-popup").classList.add("hidden");
+    saveData();
+    currentBookCard = null;
+  }
+});
+
+// Cancel delete
+document.getElementById("cancel-delete-btn").addEventListener("click", () => {
+  document.getElementById("confirmation-popup").classList.add("hidden");
+});
 
 // Save local data
 function saveData() {
