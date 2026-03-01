@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Rammetto+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Rammetto+One&display=swap");
 
 :root {
   --bg: white;
@@ -117,7 +117,7 @@ button {
 }
 
 #book-container {
-  margin: auto;
+  margin-bottom: 1rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   place-items: center;
