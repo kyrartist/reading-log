@@ -27,7 +27,7 @@
 
     <div id="book-popup">
       <div id="popup">
-        <button id="close-popup-btn">×</button>
+        <button id="close-popup-btn"><i class="bi bi-x"></i></button>
         <div class="info-container"></div>
         <h2>Reviews</h2>
         <div class="reviews-container"></div>
@@ -51,20 +51,16 @@
           step="0.25"
           required
         />
-        <label for="review">Review: </label>
-        <textarea name="review" id="review" rows="5"></textarea>
         <button type="submit" id="add-btn">Add Book</button>
       </form>
     </section>
 
     <div id="main-body">
-      <nav>
+      <div id="top-bar">
         <input id="search-input" type="text" placeholder="Search for books" />
-        <button id="search-btn" type="submit">
-          <span><i class="bi bi-search"></i></span> Search
-        </button>
-      </nav>
-      <h2>Finished</h2>
+        <button id="search-btn" type="submit">Search</button>
+      </div>
+      <h2>Bookshelf</h2>
       <div id="book-container"></div>
     </div>
 

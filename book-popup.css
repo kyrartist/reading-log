@@ -25,8 +25,8 @@
 #close-popup-btn {
   z-index: 20;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 15px;
+  top: 5px;
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
@@ -37,7 +37,7 @@
 }
 
 #close-popup-btn:hover {
-  color: #333;
+  color: var(--red);
 }
 
 .info-container {
@@ -80,7 +80,7 @@
   padding: 30px;
   text-align: center;
   width: fit-content;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 #confirmation-content h2 {

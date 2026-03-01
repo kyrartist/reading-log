@@ -42,7 +42,8 @@ function addBookToPage(book) {
   newBook.innerHTML = `
     <div class="book-image-container">
       <img src="img/no_cover_available.png" alt=""/>
-      <button class="delete-book-btn" title="Delete">×</button>
+      <button class="delete-book-btn" title="Delete"><i class="bi bi-x"></i>
+</button>
     </div>
     <h2 class="title">${book.title}</h2>
     <p class="author">${book.author}</p>

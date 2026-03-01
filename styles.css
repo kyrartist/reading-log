@@ -1,22 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Rammetto+One&display=swap');
 
 :root {
-  --bg: #f7f4ef;
-  --surface: #ffffff;
-  --text: #3a3a3a;
+  --bg: white;
+  --surface: #fff8f0;
+  --text: #0e1819;
   --text-secondary: #6b6b6b;
 
-  --accent-1: #c2a878; /* antique gold */
-  --accent-2: #a3b18a; /* sage */
-  --accent-3: #d9cfc1; /* warm beige */
+  --accent-1: #ffc117;
+  --accent-2: #fe938c;
+  --accent-3: #9dd9d2;
+  --accent-3-hover: #afe7e1;
+
+  --shadow-lg: rgba(0, 0, 0, 0.05) 0 10px 10px -5px;
 
   --red: rgb(236, 74, 74);
   --red-hover: rgb(255, 98, 98);
 
-  --button-hover: #b8c99b;
-
-  --main-font: "Gabarito", sans-serif;
-  --header-font: "PT Serif", serif;
+  --main-font: "Google Sans", sans-serif;
+  --header-font: "Google Sans", serif;
 }
 
 * {
@@ -35,17 +36,17 @@ body {
 
 #side-bar {
   padding: 0 20px;
-  background-color: var(--accent-3);
+  background-color: rgb(235, 235, 235);
   min-height: 100vh;
 }
 
 #side-bar h1 {
   color: var(--text);
   font-family: var(--header-font);
+  font-weight: 800;
 }
 
-form input,
-textarea {
+form input {
   display: block;
   width: 100%;
   margin: 5px 0 10px 0;
@@ -53,12 +54,13 @@ textarea {
   border-radius: 10px;
   font-size: 0.875em;
   padding: 0.5rem;
-  background-color: var(--bg);
-}
-
-form input {
+  background-color: white;
   border-radius: 50px;
   padding: 0.5rem 1rem;
+}
+
+form input:last-of-type {
+  margin-bottom: 1rem;
 }
 
 form legend {
@@ -67,14 +69,16 @@ form legend {
 }
 
 #add-btn {
-  border: none;
-  background-color: var(--accent-2);
-  color: white;
   padding: 1rem 1.5rem;
-  border-radius: 50px;
+  background-color: white;
+  color: var(--text);
 }
 
-nav {
+#add-btn:hover {
+  background-color: #f4f4f4;
+}
+
+#top-bar {
   padding: 1.5rem 0;
 }
 
@@ -87,21 +91,25 @@ button {
   padding: 1rem 1.5rem;
   border-radius: 50px;
   width: 300px;
-  border: solid 2px var(--text-secondary);
+  border: solid 1px var(--text-secondary);
 }
 
 #search-btn {
   padding: 1rem 1.5rem;
-  border-radius: 50px;
-  border: none;
-  background-color: var(--accent-2);
-  color: white;
   margin-left: 8px;
+  background-color: var(--accent-3);
+  color: var(--text);
 }
 
-#search-btn:hover,
-#add-btn:hover {
-  background-color: var(--button-hover);
+#search-btn:hover {
+  background-color: var(--accent-3-hover);
+}
+
+#search-btn,
+#add-btn {
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
 }
 
 #main-body {
@@ -114,7 +122,10 @@ button {
   grid-template-columns: repeat(6, 1fr);
   place-items: center;
   gap: 25px;
-  background-color: var(--surface);
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid #ddd;
   padding: 20px;
   align-items: start;
 }
@@ -122,7 +133,6 @@ button {
 .book-card {
   border-radius: 10px;
   cursor: pointer;
-  /* transition: all 0.3s ease; */
   min-width: 100px;
   position: relative;
 }
@@ -143,7 +153,7 @@ button {
   margin: auto;
   height: 100%;
   object-fit: cover;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   display: block;
 }
@@ -166,7 +176,7 @@ button {
   opacity: 0;
   transition: opacity 0.3s ease;
   padding: 0;
-  line-height: 1;
+  padding-bottom: 4px;
 }
 
 .book-image-container:hover .delete-book-btn {
@@ -187,6 +197,10 @@ button {
   font-size: 0.9rem;
   margin: 0;
   color: var(--text-secondary);
+}
+
+.rating {
+  color: var(--accent-1);
 }
 
 @media screen and (max-width: 1000px) {
