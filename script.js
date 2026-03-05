@@ -34,16 +34,43 @@ function getStarRating(rating) {
     .join("");
 }
 
+async function fetchCover(title, author) {
+  const cleanAuthor = normalizeAuthor(author);
+
+  const params = new URLSearchParams({
+    book_title: title,
+    author_name: cleanAuthor,
+    image_size: "medium",
+  });
+
+  try {
+    const res = await fetch(
+      `https://bookcover.longitood.com/bookcover?${params}`,
+    );
+    const data = await res.json();
+    return data.url || null;
+  } catch (err) {
+    console.error("Cover fetch failed:", err);
+    return null;
+  }
+}
+
+function normalizeAuthor(author) {
+  return author
+    .replace(/\./g, "") // remove periods in initials
+    .replace(/\s+/g, " ") // collapse multiple spaces
+    .trim();
+}
+
 // Creates new div with user submitted book information
-function addBookToPage(book) {
+async function addBookToPage(book) {
   const newBook = document.createElement("div");
   newBook.classList.add("book-card");
 
   newBook.innerHTML = `
     <div class="book-image-container">
-      <img src="img/no_cover_available.png" alt=""/>
-      <button class="delete-book-btn" title="Delete"><i class="bi bi-x"></i>
-</button>
+      <img class="book-cover" src="img/no_cover_available.png" alt=""/>
+      <button class="delete-book-btn" title="Delete"><i class="bi bi-x"></i></button>
     </div>
     <h2 class="title">${book.title}</h2>
     <p class="author">${book.author}</p>
@@ -52,7 +79,13 @@ function addBookToPage(book) {
 
   bookContainer.appendChild(newBook);
 
-  // saveData();
+  // ⭐ Fetch cover after card is in DOM
+  const img = newBook.querySelector(".book-cover");
+  const coverUrl = await fetchCover(book.title, book.author);
+
+  if (coverUrl) {
+    img.src = coverUrl;
+  }
 }
 
 // Add the open book pop up event listener to every .book-card element
