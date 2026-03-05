@@ -52,7 +52,7 @@ function addBookToPage(book) {
 
   bookContainer.appendChild(newBook);
 
-  saveData();
+  // saveData();
 }
 
 // Add the open book pop up event listener to every .book-card element
@@ -106,7 +106,7 @@ document.getElementById("confirm-delete-btn").addEventListener("click", () => {
     bookContainer.removeChild(currentBookCard);
     bookPopup.style.display = "none";
     document.getElementById("confirmation-popup").classList.add("hidden");
-    saveData();
+    // saveData();
     currentBookCard = null;
   }
 });
@@ -117,12 +117,12 @@ document.getElementById("cancel-delete-btn").addEventListener("click", () => {
 });
 
 // Save local data
-function saveData() {
-  localStorage.setItem("data", bookContainer.innerHTML);
-}
+// function saveData() {
+//   localStorage.setItem("data", bookContainer.innerHTML);
+// }
 
-function showBooks() {
-  bookContainer.innerHTML = localStorage.getItem("data");
-}
+// function showBooks() {
+//   bookContainer.innerHTML = localStorage.getItem("data");
+// }
 
-showBooks();
+// showBooks();
